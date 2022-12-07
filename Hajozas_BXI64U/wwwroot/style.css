@@ -4,7 +4,7 @@
 
 div {
     margin:10px;
-    border: 1px solid fuchsia
+    border: 1px solid red;
 }
 
 #külső {
@@ -41,6 +41,6 @@ div {
 }
 
 .kattintható:hover {
-    background-color: fuchsia;
+    background-color: red;
     color: white;
 }

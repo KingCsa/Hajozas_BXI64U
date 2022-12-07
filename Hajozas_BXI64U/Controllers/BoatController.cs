@@ -8,13 +8,15 @@ namespace Hajozas_BXI64U.Controllers
     public class BoatController : ControllerBase
     {
         [HttpGet]
-        [Route("questions/all")]
-        public ActionResult M1()
+        [Route("questions/{sorszám}")]
+        public ActionResult M1(int sorszám)
         {
             Models.HajosContext context = new Models.HajosContext();
-            var kérdések = from x in context.Questions select x.Question1;
+            var kérdés = (from x in context.Questions where x.QuestionId == sorszám select x).FirstOrDefault();
 
-            return new JsonResult(kérdések);
+            if (kérdés == null) return BadRequest("Nincs ilyen sorszámú kérdés");
+
+            return Ok(kérdés);
         }
 
     }
